@@ -8,9 +8,18 @@ const initialState = {
 export const charactersSlice = createSlice({
   name: "characters",
   initialState,
-  reducers: {},
+  reducers: {
+    startLoading: (state, action) => {
+      state.loading = true;
+    },
+    saveCharacters: (state, action) => {
+      // action.payload ==== [{}, {}, {}, {}]
+      state.list = [...action.payload];
+      state.loading = false;
+    },
+  },
 });
 
-export const {} = charactersSlice.actions;
+export const { startLoading, saveCharacters } = charactersSlice.actions;
 
 export default charactersSlice.reducer;
